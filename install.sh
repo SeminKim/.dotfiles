@@ -112,5 +112,7 @@ fi
 #==================================================#
 # set zsh to the default shell
 echo; echo '** set ZSH as default shell.'
-echo "exec zsh" >> $HOME/.bash_profile
+if [ "$SHELL" != "$(command -v zsh)" ]; then
+    chsh -s "$(command -v zsh)"
+fi
 exec zsh
